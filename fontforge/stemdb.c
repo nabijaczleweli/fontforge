@@ -2362,8 +2362,7 @@ return( 0 );
     /* fonts or fonts with quadratic splines). */
     /* But do that only for colinear spline segments and ensure that there are  */
     /* no bends between two splines. */
-    if ( !tp && ( !fp || t > 0.5 ) &&
-	topd->colinear && &other->to->next != NULL ) {
+    if ( !tp && ( !fp || t > 0.5 ) && topd->colinear ) {
 	testpt = topt->next->to; 
 	testpd = &gd->points[testpt->ptindex];
 	BasePoint *initdir = &topd->prevunit;
@@ -2378,8 +2377,7 @@ return( 0 );
 	}
 	if ( tp ) t_needs_recalc = true;
     }
-    if ( !fp && ( !fp || t < 0.5 ) &&
-	frompd->colinear && &other->from->prev != NULL ) {
+    if ( !fp && ( !fp || t < 0.5 ) && frompd->colinear ) {
 	testpt = frompt->prev->from; 
 	testpd = &gd->points[testpt->ptindex];
 	BasePoint *initdir = &frompd->prevunit;
